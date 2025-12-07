@@ -1,52 +1,38 @@
 {
-    "name": "facade/flare-client-php",
-    "description": "Send PHP errors to Flare",
-    "keywords": [
-        "facade",
-        "flare",
-        "exception",
-        "reporting"
-    ],
-    "homepage": "https://github.com/facade/flare-client-php",
-    "license": "MIT",
-    "require": {
-        "php": "^7.1|^8.0",
-        "facade/ignition-contracts": "~1.0",
-        "illuminate/pipeline": "^5.5|^6.0|^7.0|^8.0",
-        "symfony/http-foundation": "^3.3|^4.1|^5.0",
-        "symfony/mime": "^3.4|^4.0|^5.1",
-        "symfony/var-dumper": "^3.4|^4.0|^5.0"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.14",
-        "spatie/phpunit-snapshot-assertions": "^2.0",
-        "phpunit/phpunit": "^7.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Facade\\FlareClient\\": "src"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Facade\\FlareClient\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
+  "name":         "egulias/email-validator",
+  "description":  "A library for validating emails against several RFCs",
+  "homepage":     "https://github.com/egulias/EmailValidator",
+  "keywords":     ["email", "validation", "validator", "emailvalidation", "emailvalidator"],
+  "license":      "MIT",
+  "authors": [
+    {"name": "Eduardo Gulias Davis"}
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.1.x-dev"
     }
+  },
+  "require": {
+    "php": ">=5.5",
+    "doctrine/lexer": "^1.0.1",
+    "symfony/polyfill-intl-idn": "^1.10"
+  },
+  "require-dev": {
+    "dominicsayers/isemail": "^3.0.7",
+    "phpunit/phpunit": "^4.8.36|^7.5.15",
+    "satooshi/php-coveralls": "^1.0.1"
+  },
+  "suggest": {
+    "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+  },
+  "autoload": {
+    "psr-4": {
+      "Egulias\\EmailValidator\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Egulias\\EmailValidator\\Tests\\": "tests"
+    }
+  }
 }
