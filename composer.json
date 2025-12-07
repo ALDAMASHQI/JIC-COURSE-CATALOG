@@ -1,36 +1,39 @@
 {
-    "name": "carbonphp/carbon-doctrine-types",
-    "description": "Types to use Carbon in Doctrine",
+    "name": "brick/math",
+    "description": "Arbitrary-precision arithmetic library",
     "type": "library",
     "keywords": [
-        "date",
-        "time",
-        "DateTime",
-        "Carbon",
-        "Doctrine"
+        "Brick",
+        "Math",
+        "Mathematics",
+        "Arbitrary-precision",
+        "Arithmetic",
+        "BigInteger",
+        "BigDecimal",
+        "BigRational",
+        "BigNumber",
+        "Bignum",
+        "Decimal",
+        "Rational",
+        "Integer"
     ],
+    "license": "MIT",
     "require": {
         "php": "^8.1"
     },
     "require-dev": {
-        "doctrine/dbal": "^4.0.0",
-        "nesbot/carbon": "^2.71.0 || ^3.0.0",
-        "phpunit/phpunit": "^10.3"
+        "phpunit/phpunit": "^10.1",
+        "php-coveralls/php-coveralls": "^2.2",
+        "vimeo/psalm": "5.16.0"
     },
-    "conflict": {
-        "doctrine/dbal": "<4.0.0 || >=5.0.0"
-    },
-    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Carbon\\Doctrine\\": "src/Carbon/Doctrine/"
+            "Brick\\Math\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "KyleKatarn",
-            "email": "kylekatarnls@gmail.com"
+    "autoload-dev": {
+        "psr-4": {
+            "Brick\\Math\\Tests\\": "tests/"
         }
-    ],
-    "minimum-stability": "dev"
+    }
 }
