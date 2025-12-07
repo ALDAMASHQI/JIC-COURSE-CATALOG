@@ -1,38 +1,33 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
 use App\Models\User;
-use App\Models\StudentCourse;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class ProfileController extends Controller
 {
-    public function show()
+    public function edit()
     {
-        $student = auth()->user()->student;
-        $ratings = StudentCourse::with('course.majors.department')
-            ->where('Student_ID', $student->Student_ID)
-            ->latest()
-            ->paginate(10);
-
-        return view('student.profile', compact('student', 'ratings'));
+        $admin = auth()->user()->admin;
+        return view('admin.profile', compact('admin'));
     }
 
     public function update(Request $request)
     {
         $user = auth()->user();
-        $student = $user->student;
+        $admin = $user->admin;
 
         $request->validate([
-            'Student_Name' => 'required|string|max:100',
-            'Student_Email' => 'required|string|email|max:100|unique:student,Student_Email,' . $student->Student_ID . ',Student_ID',
+            'Admin_Name' => 'required|string|max:100',
+            'Admin_Email' => 'required|string|email|max:100|unique:admin,Admin_Email,' . $admin->Admin_ID . ',Admin_ID',
             'Username' => 'required|string|max:50|unique:user,Username,' . $user->User_ID . ',User_ID',
             'Email' => 'required|string|email|max:100|unique:user,Email,' . $user->User_ID . ',User_ID',
+            'Admin_Role' => 'required|string|max:50',
             'current_password' => 'nullable|required_with:password|current_password',
             'password' => 'nullable|confirmed|min:8',
         ]);
@@ -49,22 +44,13 @@ class ProfileController extends Controller
 
         $user->update($userData);
 
-        // Update Student record
-        $student->update([
-            'Student_Name' => $request->Student_Name,
-            'Student_Email' => $request->Student_Email,
+        // Update Admin record
+        $admin->update([
+            'Admin_Name' => $request->Admin_Name,
+            'Admin_Email' => $request->Admin_Email,
+            'Admin_Role' => $request->Admin_Role,
         ]);
 
-        return redirect()->route('student.profile')->with('success', 'Profile updated successfully!');
-    }
-
-    public function deleteRating($courseId)
-    {
-        $student = auth()->user()->student;
-
-        $rating = StudentCourse::where('Student_ID', $student->Student_ID)
-            ->where('Course_ID', $courseId)
-            ->delete();
-        return redirect()->route('student.profile')->with('success', 'Rating deleted successfully!');
+        return redirect()->route('admin.profile.edit')->with('success', 'Profile updated successfully!');
     }
 }
