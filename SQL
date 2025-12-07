@@ -1,1 +1,493 @@
-IDIIIDIIDF
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Nov 30, 2025 at 04:57 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `jic_catalog`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `Admin_ID` int NOT NULL,
+  `Admin_Name` varchar(100) DEFAULT NULL,
+  `Admin_Email` varchar(100) DEFAULT NULL,
+  `Admin_Role` varchar(50) DEFAULT NULL,
+  `Dept_ID` int DEFAULT NULL,
+  `User_ID` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Admin_ID`, `Admin_Name`, `Admin_Email`, `Admin_Role`, `Dept_ID`, `User_ID`, `created_at`, `updated_at`) VALUES
+(1, 'Abdulrahman Alharbi', 'admin@jic.edu.sa', 'MIS coordinator', 5, 1, '2025-10-20 07:12:16', '2025-11-27 17:05:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `Course_ID` int NOT NULL,
+  `Course_Code` varchar(20) NOT NULL,
+  `Course_Title` varchar(100) NOT NULL,
+  `Course_Description` text,
+  `Credit_Hours` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`Course_ID`, `Course_Code`, `Course_Title`, `Course_Description`, `Credit_Hours`, `created_at`, `updated_at`) VALUES
+(1, 'MECH101', 'Engineering Drawing and CAD', 'Introduction to technical drawing, dimensioning, and basic computer-aided design (CAD) tools used in mechanical engineering.', 6, '2025-10-20 07:12:17', '2025-10-20 08:38:26'),
+(2, 'MECH202', 'Thermodynamics I', 'Fundamentals of energy, heat, and work. Application of the first and second laws of thermodynamics to closed and open systems.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(3, 'ELEC210', 'Electrical Power Systems', 'Covers generation, transmission, and distribution of electric power, including system protection and load management concepts.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(4, 'INST220', 'Process Control Systems', 'Study of control theory, sensors, and actuators in industrial automation systems. Practical applications using PLCs.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(5, 'COMP250', 'Computer Networks I', 'Introduction to data communication, network topologies, OSI model layers, and IP addressing. Focus on LAN configuration and cabling.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(6, 'COMP310', 'Advanced Networking and Security', 'Covers routing, switching, and security protocols. Includes firewall configuration and network intrusion prevention techniques.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(7, 'CHEM201', 'Chemical Process Principles', 'Covers mass and energy balances in chemical process systems. Introduces process simulation and system optimization.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(8, 'CHEM301', 'Reaction Engineering', 'Principles of chemical kinetics and reactor design. Applications in batch, plug flow, and continuous stirred-tank reactors.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(9, 'BUS201', 'Principles of Management', 'Introduces planning, organizing, leading, and controlling functions in modern organizations. Emphasizes leadership and ethics.', 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(10, 'BUS310', 'Financial Accounting', 'Study of accounting principles, financial statements, and reporting standards for corporate decision-making and control.', 1, '2025-10-20 07:12:17', '2025-10-20 08:40:53'),
+(13, 'CS 120', 'Programming I', 'Overview of computers and computing. Introduction to a typical programming language,\r\nsuch as Java. Basic data types and operators. Basic object-oriented concepts. Console\r\ninput/output. Logical expressions and control structures. Arrays and strings.', 3, '2025-11-25 08:28:21', '2025-11-25 08:28:21'),
+(14, 'CS 231', 'Programming II', 'Advanced programming concepts. Simple graphical user interfaces. Basic data structures. File\r\nI/O. Searching and sorting techniques. Survey of computer science areas. Case studies and\r\npractice in developing small scale programs.', 4, '2025-11-25 08:30:13', '2025-11-25 08:30:13'),
+(15, 'MIS 204', 'Business Data Management', 'Database versus file processing environments, Data resource management, Database support\r\nfor various levels of management. Relational Database model. Conceptual data modeling. Logical\r\ndatabase design. Integrity and security.\r\nLab: Database language SQL, Data and Database administration, Case studies in DBMS\r\ndevelopment and implementation using MS ACCESS or ORACLE client versions.', 3, '2025-11-25 08:32:50', '2025-11-25 08:32:50'),
+(16, 'MIS 221', 'Fundamentals of E-Commerce', 'This course introduces the fundamental concepts of electronic commerce, its components and\r\n\r\nsome of the e-commerce popular applications. It covers various e-commerce models such as E-\r\nMarketplaces, B2B E-Commerce, Innovative EC Systems, and Retailing in Electronic Commerce.\r\n\r\nVarious issues associated with e-commerce security, privacy, intellectual property rights, with\r\nweb 2.0 tools, online Consumer Behaviors theories, and their role and significance in shaping the\r\nindustry will be explored.\r\nLab: Practical knowledge in the major web development technologies and languages such as\r\nHTML, CSS, JavaScript', 3, '2025-11-25 08:34:46', '2025-11-25 08:34:46'),
+(17, 'MIS 101', 'Computer Applications', 'Provide fundamentals of Microsoft Excel and Access Database. Topics Include formulas, charts,\r\ngraphs as well as database design fundamentals including working with tables, queries, forms and\r\nreports.', 3, '2025-11-25 08:36:37', '2025-11-25 08:36:37'),
+(18, 'MIS 102', 'Principles of MIS', 'This course is an introduction to information systems and their components, technology,\r\nprocesses, structures, and human resources. It also presents the strategic planning processes and\r\nmanagerial responsibilities necessary for the successful implementation of an information system\r\nin the workplace. It covers key applications like Enterprise Resource Planning, Supply Chain\r\nManagement, Customer Relationship Management, e-commerce and m-commerce and decision\r\nsupport systems. The course aims for students to acknowledge the importance of information\r\nsystems in various functions of the organization and how different types of information systems\r\nmay be used as a means to achieve competitive advantage.', 3, '2025-11-25 08:38:16', '2025-11-25 08:38:16'),
+(19, 'MIS 202', 'Business System Analysis & Design I', 'Introduction to system development life cycle. Topics cover system analysis activities, such as\r\nsystem requirements, information-gathering techniques, use cases, data modeling, and\r\napproaches to system development. Students practice analysis activities through team\r\nassignments and work on cases using a combination of tools and techniques.', 3, '2025-11-25 08:42:15', '2025-11-25 08:42:15'),
+(20, 'MIS 304', 'Business Systems Analysis & Design II', 'This course complements (MIS 202 Business Systems Analysis and Design). It focuses on the\r\ndesign and implementation phases of the SDLC. Topics include designing the environment,\r\ndesigning the user and system interfaces, designing the software, designing the database,\r\ndesigning the security and system controls, and the latest trends in systems development.', 3, '2025-11-25 08:43:11', '2025-11-25 08:43:11'),
+(21, 'MIS 451', 'Capstone Project', 'Students will be assigned a project. In which they use their acquired knowledge and skills related\r\nto system analysis and design, project management, databases, programming, and networks to\r\nsolve real business cases.', 3, '2025-11-25 08:45:10', '2025-11-25 08:45:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_prerequisite`
+--
+
+CREATE TABLE `course_prerequisite` (
+  `Course_ID` int NOT NULL,
+  `Prerequisite_Course_ID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `course_prerequisite`
+--
+
+INSERT INTO `course_prerequisite` (`Course_ID`, `Prerequisite_Course_ID`) VALUES
+(2, 1),
+(1, 2),
+(4, 3),
+(6, 5),
+(8, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(14, 13),
+(16, 13),
+(21, 14),
+(21, 15),
+(21, 16),
+(19, 17),
+(15, 18),
+(16, 18),
+(19, 18),
+(20, 19),
+(21, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `Dept_ID` int NOT NULL,
+  `Dept_Name` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`Dept_ID`, `Dept_Name`, `created_at`, `updated_at`) VALUES
+(1, 'Mechanical Engineering Department', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(2, 'Electrical Engineering Department', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(3, 'Computer Science & Engineering Department', '2025-10-20 07:12:17', '2025-11-25 11:18:01'),
+(4, 'Chemical Engineering Department', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(5, 'Business Administration Department', '2025-10-20 07:12:17', '2025-10-20 07:12:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `major`
+--
+
+CREATE TABLE `major` (
+  `Major_ID` int NOT NULL,
+  `Major_Name` varchar(100) NOT NULL,
+  `Required_Credits` int NOT NULL,
+  `Dept_ID` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `major`
+--
+
+INSERT INTO `major` (`Major_ID`, `Major_Name`, `Required_Credits`, `Dept_ID`, `created_at`, `updated_at`) VALUES
+(1, 'Mechanical Maintenance Technology', 120, 1, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(2, 'Thermodynamics and Power Systems', 120, 1, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(3, 'Industrial Mechanics and Design', 120, 1, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(4, 'Power Systems Technology', 120, 2, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(5, 'Control and Automation Engineering', 120, 2, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(6, 'Electrical Machines and Drives', 120, 2, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(7, 'Computer Networking Technology', 120, 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(8, 'Software Engineering', 120, 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(9, 'Cybersecurity and Information Protection', 120, 3, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(10, 'Chemical Process Technology', 120, 4, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(11, 'Petrochemical Engineering', 120, 4, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(12, 'Environmental Process Engineering', 120, 4, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(13, 'Accounting and Financial Management', 120, 5, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(14, 'Industrial Management', 120, 5, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(15, 'Human Resource Development', 120, 5, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(16, 'Management Information Systems', 120, 5, '2025-11-25 07:34:02', '2025-11-25 07:34:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `major_course`
+--
+
+CREATE TABLE `major_course` (
+  `Major_ID` int NOT NULL,
+  `Course_ID` int NOT NULL,
+  `Degree_Plan` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `major_course`
+--
+
+INSERT INTO `major_course` (`Major_ID`, `Course_ID`, `Degree_Plan`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Semester 1', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(2, 2, 'Semester 2', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(4, 3, 'Semester 3', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(5, 4, 'Semester 4', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(7, 5, 'Semester 3', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(7, 13, NULL, '2025-11-25 11:28:54', '2025-11-25 11:28:54'),
+(7, 14, NULL, '2025-11-25 11:30:13', '2025-11-25 11:30:13'),
+(9, 6, 'Semester 5', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(10, 7, 'Semester 2', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(11, 8, 'Semester 4', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(13, 10, 'Semester 3', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(14, 9, 'Semester 1', '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(16, 15, NULL, '2025-11-25 11:32:50', '2025-11-25 11:32:50'),
+(16, 16, NULL, '2025-11-25 11:34:46', '2025-11-25 11:34:46'),
+(16, 17, NULL, '2025-11-25 11:36:37', '2025-11-25 11:36:37'),
+(16, 18, NULL, '2025-11-25 11:38:16', '2025-11-25 11:38:16'),
+(16, 19, NULL, '2025-11-25 11:42:15', '2025-11-25 11:42:15'),
+(16, 20, NULL, '2025-11-25 11:43:11', '2025-11-25 11:43:11'),
+(16, 21, NULL, '2025-11-25 11:45:10', '2025-11-25 11:45:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `Student_ID` int NOT NULL,
+  `Student_Name` varchar(100) DEFAULT NULL,
+  `Student_Email` varchar(100) DEFAULT NULL,
+  `Major_ID` int DEFAULT NULL,
+  `Admin_ID` int DEFAULT NULL,
+  `User_ID` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`Student_ID`, `Student_Name`, `Student_Email`, `Major_ID`, `Admin_ID`, `User_ID`, `created_at`, `updated_at`) VALUES
+(1, 'Abdulaziz Aldamashqi', 'abdulaziz@jic.edu.sa', 16, 1, 2, '2025-10-20 07:12:17', '2025-11-27 16:17:04'),
+(2, 'Kumail Alkhalifah', 'kumail@jic.edu.sa', 16, 1, 3, '2025-10-20 07:12:17', '2025-11-27 16:17:19'),
+(3, 'Omar Aldossary', 'omar@jic.edu.sa', 13, 1, 4, '2025-10-20 07:12:17', '2025-11-27 16:17:40'),
+(4, 'Sadiq Alfadhel', 'sadiq@jic.edu.sa', 10, 1, 5, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(5, 'Abdullah Alyaseen', 'abdullah@jic.edu.sa', 14, 1, 6, '2025-10-20 07:12:17', '2025-10-20 07:12:17'),
+(7, 'saeed saad', 'saeed@gmail.com', 3, NULL, 8, '2025-11-26 13:35:10', '2025-11-27 17:21:27'),
+(8, 'Mohammad Aldamashqi', 'mohammessss2222d@gmail.com', 7, NULL, 9, '2025-11-26 13:37:01', '2025-11-27 17:22:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_course`
+--
+
+CREATE TABLE `student_course` (
+  `Student_ID` int NOT NULL,
+  `Course_ID` int NOT NULL,
+  `Average_difficulty_rate` decimal(3,2) DEFAULT NULL,
+  `Rating_Comment` text,
+  `Rating_number` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `student_course`
+--
+
+INSERT INTO `student_course` (`Student_ID`, `Course_ID`, `Average_difficulty_rate`, `Rating_Comment`, `Rating_number`, `created_at`, `updated_at`) VALUES
+(1, 1, '3.00', 'Great course, a bit challenging.', 10, '2025-10-20 07:12:17', '2025-11-25 10:40:58'),
+(1, 2, '1.00', 'Pretty easy.', 12, '2025-10-20 07:12:17', '2025-11-25 10:43:29'),
+(1, 3, '4.00', 'Very tough but useful.', 8, '2025-10-20 07:12:17', '2025-11-25 10:43:55'),
+(1, 4, '3.00', 'Good overall.', 9, '2025-10-20 07:12:17', '2025-11-25 10:44:30'),
+(1, 13, '5.00', 'the material is for beginners due to the lack of explaining that clarify concepts for non-CS students', 1, '2025-11-25 09:00:22', '2025-11-25 09:01:00'),
+(1, 14, '5.00', 'swing takes you another level of difficulty', 1, '2025-11-25 09:01:58', '2025-11-25 09:01:58'),
+(1, 15, '4.00', 'SQL part needs a lot of practice', 1, '2025-11-25 09:04:58', '2025-11-25 09:04:58'),
+(1, 16, '3.00', 'not too difficult but HTML Needs some practice', 1, '2025-11-25 09:06:52', '2025-11-25 09:06:52'),
+(1, 17, '1.00', 'easy course', 1, '2025-11-25 09:07:48', '2025-11-25 09:08:13'),
+(1, 18, '1.00', 'easy course', 1, '2025-11-25 09:09:12', '2025-11-25 09:09:12'),
+(1, 19, '3.00', 'faced some problems with kind of diagrams', 1, '2025-11-25 09:09:44', '2025-11-25 09:09:44'),
+(1, 20, '3.00', 'rich material', 1, '2025-11-25 09:10:25', '2025-11-25 09:10:25'),
+(1, 21, '5.00', 'here where you should combine all knowledge you got to succeed', 1, '2025-11-25 09:11:34', '2025-11-25 09:11:34'),
+(2, 1, '2.00', 'Some parts were confusing.', 7, '2025-10-20 07:12:17', '2025-11-25 10:44:53'),
+(2, 2, '2.00', 'not that difficult', 1, '2025-11-27 14:25:25', '2025-11-27 14:25:25'),
+(2, 3, '5.00', 'Too difficult.', 11, '2025-10-20 07:12:17', '2025-11-25 10:45:19'),
+(2, 4, '2.00', 'Excellent content.', 9, '2025-10-20 07:12:17', '2025-11-25 10:46:34'),
+(2, 5, '5.00', 'I HATE THE TEACHER ***** AL*****', 10, '2025-10-20 07:12:17', '2025-11-26 15:35:46'),
+(3, 5, '2.00', 'Not too hard.', 15, '2025-10-20 07:12:17', '2025-11-25 10:48:11'),
+(3, 6, '1.00', 'Well explained.', 13, '2025-10-20 07:12:17', '2025-11-25 10:48:34'),
+(3, 9, '4.00', 'Hard but fair', 6, '2025-10-20 07:12:17', '2025-11-25 10:49:07'),
+(4, 3, '3.00', 'Moderate difficulty.', 8, '2025-10-20 07:12:17', '2025-11-25 10:49:48'),
+(4, 4, '4.00', 'Very challenging.', 7, '2025-10-20 07:12:17', '2025-11-25 10:50:18'),
+(4, 7, '2.00', 'Enjoyed it', 9, '2025-10-20 07:12:17', '2025-11-25 10:50:38'),
+(4, 8, '5.00', 'hard tests.', 10, '2025-10-20 07:12:17', '2025-11-25 10:51:08'),
+(5, 1, '2.00', 'a lot of homework required.', 4, '2025-10-20 07:12:17', '2025-11-25 10:51:39'),
+(5, 5, '3.00', 'A perfectly average course—neither too difficult nor too easy. ', 5, '2025-10-20 07:12:17', '2025-11-25 10:53:23'),
+(5, 9, '1.00', 'The instructor clearly knew their subject and explained it with patience.', 9, '2025-10-20 07:12:17', '2025-11-25 10:53:59'),
+(5, 10, '2.00', 'Some concepts required careful attention, but overall the course remained manageable.', 10, '2025-10-20 07:12:17', '2025-11-25 10:54:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `User_ID` int NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Role` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`User_ID`, `Username`, `Email`, `password`, `Role`) VALUES
+(1, 'admin_jic', 'admin@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Admin'),
+(2, 'abdulaziz', 'abdulaziz@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Student'),
+(3, 'kumail', 'kumail@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Student'),
+(4, 'omar', 'omar@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Student'),
+(5, 'sadiq', 'sadiq@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Student'),
+(6, 'abdullah', 'abdullah@jic.edu.sa', '$2y$10$aKhNNNXlP3R96DfwJdPTn.ew6scWdg2tSCSUUNwGzaP/SRpqOEtCG', 'Student'),
+(7, 'ahmed', 'zemaceza@mailinator.com', '$2y$10$NDsRwVH9cee6WftyDfuSgOs3K8jyDDU5OTbQcjvH2178mF4DfIrCe', 'student'),
+(8, 'saeed saad', 'saeed@gmail.com', '$2y$10$UGkQ7bFQeoRBlvej0RU7s.ijXpn0zDoRWjEJHhr6u.jan5/Op.RJi', 'student'),
+(9, 'Mohammad Aldamashqi', 'mohammessss2222d@gmail.com', '$2y$10$XfQc5wVFLv8Hq2ubZUP4Jucx1Cfo/0qNkDMrLynjWcyW8ITI2YFd2', 'Student');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`Admin_ID`),
+  ADD UNIQUE KEY `User_ID` (`User_ID`),
+  ADD KEY `Dept_ID` (`Dept_ID`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`Course_ID`),
+  ADD UNIQUE KEY `Course_Code` (`Course_Code`);
+
+--
+-- Indexes for table `course_prerequisite`
+--
+ALTER TABLE `course_prerequisite`
+  ADD PRIMARY KEY (`Course_ID`,`Prerequisite_Course_ID`),
+  ADD KEY `Prerequisite_Course_ID` (`Prerequisite_Course_ID`);
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`Dept_ID`);
+
+--
+-- Indexes for table `major`
+--
+ALTER TABLE `major`
+  ADD PRIMARY KEY (`Major_ID`),
+  ADD KEY `Dept_ID` (`Dept_ID`);
+
+--
+-- Indexes for table `major_course`
+--
+ALTER TABLE `major_course`
+  ADD PRIMARY KEY (`Major_ID`,`Course_ID`),
+  ADD KEY `Course_ID` (`Course_ID`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`Student_ID`),
+  ADD UNIQUE KEY `User_ID` (`User_ID`),
+  ADD KEY `Major_ID` (`Major_ID`),
+  ADD KEY `Admin_ID` (`Admin_ID`);
+
+--
+-- Indexes for table `student_course`
+--
+ALTER TABLE `student_course`
+  ADD PRIMARY KEY (`Student_ID`,`Course_ID`),
+  ADD KEY `Course_ID` (`Course_ID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`User_ID`),
+  ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `Admin_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `Course_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `Dept_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `major`
+--
+ALTER TABLE `major`
+  MODIFY `Major_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `Student_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `User_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`Dept_ID`) REFERENCES `department` (`Dept_ID`),
+  ADD CONSTRAINT `admin_ibfk_2` FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`);
+
+--
+-- Constraints for table `course_prerequisite`
+--
+ALTER TABLE `course_prerequisite`
+  ADD CONSTRAINT `course_prerequisite_ibfk_1` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`),
+  ADD CONSTRAINT `course_prerequisite_ibfk_2` FOREIGN KEY (`Prerequisite_Course_ID`) REFERENCES `course` (`Course_ID`);
+
+--
+-- Constraints for table `major`
+--
+ALTER TABLE `major`
+  ADD CONSTRAINT `major_ibfk_1` FOREIGN KEY (`Dept_ID`) REFERENCES `department` (`Dept_ID`);
+
+--
+-- Constraints for table `major_course`
+--
+ALTER TABLE `major_course`
+  ADD CONSTRAINT `major_course_ibfk_1` FOREIGN KEY (`Major_ID`) REFERENCES `major` (`Major_ID`),
+  ADD CONSTRAINT `major_course_ibfk_2` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`Major_ID`) REFERENCES `major` (`Major_ID`),
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`Admin_ID`) REFERENCES `admin` (`Admin_ID`),
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`);
+
+--
+-- Constraints for table `student_course`
+--
+ALTER TABLE `student_course`
+  ADD CONSTRAINT `student_course_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`Student_ID`),
+  ADD CONSTRAINT `student_course_ibfk_2` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
