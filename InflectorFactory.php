@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Doctrine\Inflector\Rules\Spanish;
+namespace Doctrine\Inflector\Rules\Portuguese;
 
 use Doctrine\Inflector\GenericLanguageInflectorFactory;
 use Doctrine\Inflector\Rules\Ruleset;
