@@ -1,38 +1,46 @@
 {
-  "name":         "egulias/email-validator",
-  "description":  "A library for validating emails against several RFCs",
-  "homepage":     "https://github.com/egulias/EmailValidator",
-  "keywords":     ["email", "validation", "validator", "emailvalidation", "emailvalidator"],
-  "license":      "MIT",
-  "authors": [
-    {"name": "Eduardo Gulias Davis"}
-  ],
-  "extra": {
-    "branch-alias": {
-      "dev-master": "2.1.x-dev"
+    "name": "facade/ignition-contracts",
+    "description": "Solution contracts for Ignition",
+    "keywords": [
+        "flare",
+        "contracts",
+        "ignition"
+    ],
+    "homepage": "https://github.com/facade/ignition-contracts",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "homepage": "https://flareapp.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^v2.15.8",
+        "phpunit/phpunit": "^9.3.11",
+        "vimeo/psalm": "^3.17.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Facade\\IgnitionContracts\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Facade\\IgnitionContracts\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
     }
-  },
-  "require": {
-    "php": ">=5.5",
-    "doctrine/lexer": "^1.0.1",
-    "symfony/polyfill-intl-idn": "^1.10"
-  },
-  "require-dev": {
-    "dominicsayers/isemail": "^3.0.7",
-    "phpunit/phpunit": "^4.8.36|^7.5.15",
-    "satooshi/php-coveralls": "^1.0.1"
-  },
-  "suggest": {
-    "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
-  },
-  "autoload": {
-    "psr-4": {
-      "Egulias\\EmailValidator\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Egulias\\EmailValidator\\Tests\\": "tests"
-    }
-  }
 }
