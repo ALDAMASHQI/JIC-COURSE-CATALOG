@@ -1,0 +1,56 @@
+:root {
+    --primary-dark: #c89f4b; /* Gold/Amber */
+    --accent-gold: #4d627d; /* Slate Blue/Deep Teal */
+    --secondary-green: #6da649; /* Medium Green */
+    --light-gray: #f4f6f9; /* Off-White background */
+    --dark-gray: #2c3e50; /* Darker Navy/Charcoal for text/footer */
+    --text-color: #34495e; /* Default body text color */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-gray);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-container {
+    max-width: 420px;
+    width: 100%;
+}
+
+.login-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.brand-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.brand-header img {
+
+    margin-bottom: 10px;
+}
+
+.brand-header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.brand-header span {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.form-control:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
